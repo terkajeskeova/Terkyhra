@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+body {background-color: brown;}
+</style>
+</head>
+<body>
+<h1 align="center">Cvičák</h1> <br><br><br>
+<p1>Ahoj hafane jak se jmenuješ?</p1><br>
+
+<form>
+ <p1> Vyber svoje jméno: </p1> 
+  <select id="listJmen" onchange="volbaJmena()">
+    <option> </option>
+    <option>Brit</option>
+    <option>Rex</option>  
+    <option>Puňťa</option>
+    <option>Lexa</option>
+    <option>Deserved</option>
+    <option>Better</option>
+  </select> <br>
+<p1>Jmeno pejska: </p1><p1 id = "jmeno" ></p1>
+</form>
+<br>
+
+<button  id="button1" type="button" onclick="myFunction0()" style="visibility: hidden">Začít</button>
+<br>
+<p1 id = "p1" style="visibility: hidden" >Vyzkoušíme si, jak znáš povely. Pokud všechno zvládneš, dostaneš kost.</p1>
+<br>
+<p1 id='p2'></p1> <p1 id = 'p3' style="visibility: hidden">Sedni!</p1>
+<br>
+
+<form id = 'form2' style="visibility: hidden" >
+ <p1> Co udeláš?: </p1> 
+  <select id="list2" onchange="sedni()">
+    <option> </option>
+    <option>Lehnu si</option>
+    <option>Sednu si</option>  
+    <option>Chytnu veverku</option>
+  </select> <br>
+<p1>Vyberu: </p1><p1 id = "povel" ></p1>
+</form>
+
+<p1 id='p4'></p1>
+
+<p1 id='p5'></p1> <p1 id = 'p6' style="visibility: hidden">Štěkej!</p1>
+<br>
+
+<form id = 'form3' style="visibility: hidden" >
+ <p1> Co udeláš?: </p1> 
+  <select id="list3" onchange="stekej()">
+    <option> </option>
+    <option>Chytnu veverku</option>
+    <option>Zaštěkám</option>  
+    <option>Odběhnu pryč</option>
+  </select> <br>
+<p1>Vyberu: </p1><p1 id = "povel2" ></p1>
+</form>
+
+<p1 id='p7'></p1>
+
+<p1 id='p8'></p1> <p1 id = 'p9' style="visibility: hidden">Dělej si co chceš!</p1>
+<br>
+
+<form id = 'form4' style="visibility: hidden" >
+ <p1> Co udeláš?: </p1> 
+  <select id="list4" onchange="delejSiCoChces()">
+    <option> </option>
+    <option>Chytnu veverku</option>
+    <option>Přinesu klacek</option>  
+    <option>Zalezu do boudy</option>
+  </select> <br>
+<p1>Vyberu: </p1><p1 id = "povel3" ></p1>
+</form>
+
+<p1 id='p10'></p1>
+
+<script>
+
+var jmeno = "noName";
+
+function volbaJmena(){
+ var listJmen = document.getElementById("listJmen");
+ jmeno = listJmen.options[listJmen.selectedIndex].text;
+ document.getElementById("jmeno").innerHTML = jmeno;
+ zviditelniElement('button1')
+}
+
+function myFunction0(){
+ zviditelniElement('p1');
+ dejVybraneJmenoDoElementu('p2');
+ zviditelniElement('p3');
+ zviditelniElement('form2');
+}
+
+function sedni(){
+   var list2 = document.getElementById("list2");
+   var cinnost = list2.options[list2.selectedIndex].text;
+  
+   document.getElementById("povel").innerHTML = cinnost;
+   
+   if(cinnost == 'Sednu si'){
+    document.getElementById('p4').innerHTML = 'Prima druhý povel';
+    schovejElement('list2')
+    myFunction1();
+   }else{
+   document.getElementById('p4').innerHTML = 'Špatně, udělej něco jiného.';
+   }
+}
+
+function myFunction1(){
+ dejVybraneJmenoDoElementu('p5');
+ zviditelniElement('p6');
+ zviditelniElement('form3');
+}
+
+function stekej(){
+   var list3 = document.getElementById("list3");
+   var cinnost = list3.options[list3.selectedIndex].text;
+  
+   document.getElementById("povel2").innerHTML = cinnost;
+   
+   if(cinnost == 'Zaštěkám'){
+    document.getElementById('p7').innerHTML = 'Prima poslední povel';
+    myFunction2();
+    schovejElement('list3')
+   }else{
+   document.getElementById('p7').innerHTML = 'Špatně, udělej něco jiného.';
+   }
+}
+
+function myFunction2(){
+ dejVybraneJmenoDoElementu('p8');
+ zviditelniElement('p9');
+ zviditelniElement('form4');
+}
+
+function delejSiCoChces(){
+   var list4 = document.getElementById("list4");
+   var cinnost = list4.options[list4.selectedIndex].text;
+  
+   document.getElementById("povel3").innerHTML = cinnost;
+   document.getElementById('p10').innerHTML = 'Tak je hodný, tumáš kost.';
+}
+
+
+
+function zviditelniElement(id){
+ var x = document.getElementById(id);
+ x.style.visibility = 'visible'
+}
+
+function schovejElement(id){
+ var x = document.getElementById(id);
+ x.style.visibility = 'hidden'
+}
+
+function dejVybraneJmenoDoElementu(id){
+ document.getElementById(id).innerHTML = jmeno;
+}
+
+</script>
+
+
+</body>
+</html>
